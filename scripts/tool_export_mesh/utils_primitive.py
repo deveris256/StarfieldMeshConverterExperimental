@@ -573,8 +573,7 @@ class Primitive():
             self.raw_normals = np.array(self.raw_normals, dtype=np.float32)
         else:
             self.raw_normals = np.empty(len(self.blender_mesh.loops) * 3, dtype=np.float32)
-            self.blender_mesh.calc_normals_split()
-            self.blender_mesh.loops.foreach_get('normal', self.raw_normals)
+            self.blender_mesh.corner_normals.foreach_get('vector', self.raw_normals)
         
         self.raw_normals = self.raw_normals.reshape(-1, 3)
 

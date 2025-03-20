@@ -489,7 +489,7 @@ def PreprocessAndProxy(old_obj, use_world_origin, convert_to_mesh = True, do_tri
 	bpy.ops.object.select_all(action='DESELECT')
 	selected_obj.select_set(True)
 
-	bpy.ops.object.shade_smooth(use_auto_smooth=True)
+	bpy.ops.object.shade_auto_smooth(use_auto_smooth=True)
 
 	if auto_add_sharp:
 		modifier2 = selected_obj.modifiers.new(name = selected_obj.name, type='DATA_TRANSFER')
@@ -625,10 +625,9 @@ def CalcVIdLIdlist(mesh):
 
 def GetNormalTangents(mesh, with_tangent = True, fast_mode = False, fast_mode_list = None):
 	if fast_mode and fast_mode_list != None:
-		mesh.calc_normals_split()
 		if with_tangent:
 			mesh.calc_tangents()		
-			Normals = [np.array(mesh.loops[loop_idx].normal) for loop_idx in fast_mode_list]
+			Normals = [np.array(mesh.corner_normals[loop_idx]) for loop_idx in fast_mode_list]
 			
 			if with_tangent:
 				Bitangent_sign = [mesh.loops[loop_idx].bitangent_sign for loop_idx in fast_mode_list]
@@ -639,14 +638,13 @@ def GetNormalTangents(mesh, with_tangent = True, fast_mode = False, fast_mode_li
 	else:
 		verts_count = len(mesh.vertices)
 		Normals = [np.array([0,0,0]) for i in range(verts_count)]
-		mesh.calc_normals_split()
 		if with_tangent:
 			Bitangent_sign = [1 for i in range(verts_count)]
 			Tangents = [np.array([0,0,0]) for i in range(verts_count)]
 			mesh.calc_tangents()
 		for face in mesh.polygons:
 			for vert_idx, loop_idx in zip(face.vertices, face.loop_indices):
-				Normals[vert_idx] = Normals[vert_idx] + np.array(mesh.loops[loop_idx].normal)
+				Normals[vert_idx] = Normals[vert_idx] + np.array(mesh.corner_normals[loop_idx])
 				if with_tangent:
 					Bitangent_sign[vert_idx] = mesh.loops[loop_idx].bitangent_sign
 					Tangents[vert_idx] = Tangents[vert_idx] + np.array(mesh.loops[loop_idx].tangent)

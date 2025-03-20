@@ -385,7 +385,7 @@ def ExportMorph(options, context, export_file_path, operator):
 		utils_blender.SetSelectObjects(n_objs)
 		bpy.ops.object.join()
 		ref_obj = utils_blender.GetActiveObject()
-		bpy.ops.object.shade_smooth(use_auto_smooth=True)
+		bpy.ops.object.shade_auto_smooth(use_auto_smooth=True)
 	
 	if ref_obj != None:
 		if ref_obj.data.shape_keys == None or ref_obj.data.shape_keys.key_blocks == None:
@@ -490,7 +490,7 @@ def ExportMorph(options, context, export_file_path, operator):
 		
 		bpy.ops.object.mode_set(mode='OBJECT')
 		utils_blender.SetActiveObject(me_obj)
-		bpy.ops.object.shade_smooth(use_auto_smooth=True)
+		bpy.ops.object.shade_auto_smooth(use_auto_smooth=True)
 
 		if do_smooth_perimeter:
 			utils_blender.SmoothPerimeterNormal(me_obj, [ref_obj], True, target_obj, loop_mapping_base="NEAREST_POLYNOR")
@@ -598,7 +598,7 @@ def CreateMorphObjSet(options, context, basis_obj, ref_objs, target_objs: list, 
 		utils_blender.SetSelectObjects(n_objs)
 		bpy.ops.object.join()
 		ref_obj = utils_blender.GetActiveObject()
-		bpy.ops.object.shade_smooth(use_auto_smooth=True)
+		bpy.ops.object.shade_auto_smooth(use_auto_smooth=True)
 
 	if ref_obj != None:
 		if ref_obj.data.shape_keys == None or ref_obj.data.shape_keys.key_blocks == None:
@@ -679,7 +679,7 @@ def CreateMorphObjSet(options, context, basis_obj, ref_objs, target_objs: list, 
 		
 		bpy.ops.object.mode_set(mode='OBJECT')
 		utils_blender.SetActiveObject(me_obj)
-		bpy.ops.object.shade_smooth(use_auto_smooth=True)
+		bpy.ops.object.shade_auto_smooth(use_auto_smooth=True)
 		utils_blender.move_object_to_collection([me_obj], prev_coll)
 		utils_blender.move_object_to_parent([me_obj], morph_node)
 

@@ -1,0 +1,15 @@
+schema_version = "1.0.0"
+
+id = "tool_export_mesh"
+version = "1.5.0"
+name = "Starfield Geometry Bridge"
+tagline = "Export/Import/Edit .nif, .dat and .mesh files for Starfield."
+maintainer = "https://github.com/SesamePaste233/StarfieldMeshConverter"
+type = "add-on"
+blender_version_min = "4.3.0"
+license = [
+  "SPDX:MIT"
+]
+
+[permissions]
+files = "Import/export Starfield game files from/to disk"

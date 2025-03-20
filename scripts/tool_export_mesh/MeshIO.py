@@ -239,7 +239,6 @@ def ImportMesh_Alt(file_path, options, context, operator, mesh_name_override = N
 			[vg.add([int(v_id)], float(w), 'ADD') for v_id, w in zip(v_ids, ws)]
 
 	utils_blender.SetActiveObject(obj)
-	obj.data.use_auto_smooth = True
 
 	utils_blender.MergeCustomNormals(obj)
 
