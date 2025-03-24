@@ -1,3 +1,10 @@
+# SGB: Experimental fork
+
+## Main Branch Changes List
+- Support for 4.3 for tool_mesh_convert (tool_physics_editor is not supported yet on 4.3)
+
+___
+
 # MeshConverter
 A blender plugin that exports models, morph, geometry and physics data for Starfield in a single click. This plugin is designed to work with blender version 3.5 or 3.6, imcompatible with blender 4.0+.
 
