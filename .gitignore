@@ -374,3 +374,6 @@ FodyWeavers.xsd
 /lib
 /scripts/MakePackage.py
 /UnkBlocks
+scripts/tool_export_mesh/MeshConverter.dll
+scripts/tool_export_mesh/cached_paths
+scripts/tool_export_mesh/Assets/hkTypeTranscript/hkTypeTranscript.json
