@@ -87,6 +87,8 @@ def register():
 	
 	for module in __modules__:
 		module.register()
+	
+	bpy.utils.register_preset_path(os.path.dirname(__file__))
 
 def unregister():
 

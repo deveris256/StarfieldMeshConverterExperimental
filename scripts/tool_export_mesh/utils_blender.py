@@ -1329,3 +1329,8 @@ def ApplyShapekey(obj: bpy.types.Object, target_sk_n: str, use_relative = True):
             sk.data.foreach_set('co', rvs-ovs+vs)
             
     target_sk.value = 0
+
+def RestoreOperatorDefaults(op):
+	for prop in op.bl_rna.properties:
+	    if isinstance(prop, bpy.props._PropertyDeferred):
+	        setattr(op, prop.keywords['attr'], prop.keywords['default'])

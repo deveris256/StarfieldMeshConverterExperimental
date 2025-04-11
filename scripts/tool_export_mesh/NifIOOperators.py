@@ -388,6 +388,8 @@ class ExportCustomNif(bpy.types.Operator):
 	
 	filter_glob: bpy.props.StringProperty(default="*.nif", options={'HIDDEN'})
 
+	bl_options = {'PRESET'}
+
 	snapping_enabled: bpy.props.BoolProperty(
 		name="Snap Normals To Selected",
 		description="Snapping data of connecting vertices to closest verts from selected objects.",
